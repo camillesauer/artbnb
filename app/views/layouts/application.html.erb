@@ -4,6 +4,8 @@
     <title>Artbnb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <% user_signed_in? %>
+    <% current_user %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +13,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
-
+  
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
