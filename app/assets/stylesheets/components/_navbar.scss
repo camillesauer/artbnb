@@ -1,6 +1,14 @@
+.navbar, #navbarSupportedContent {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: lighter;
+	color: black;
+	font-size: 1em;
+}
 .navbar-lewagon {
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
   justify-content: space-between;
-  background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
