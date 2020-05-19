@@ -10,4 +10,11 @@ class Artwork < ApplicationRecord
   validates :dimension, presence: true
   validates :category, inclusion: { in: ["painting", "sculpture", "installation", "photographie", "vidéo"]}
 
+  def destroy
+    @artwork = Artwork.find(params[:id])
+    @artwork.destroy
+
+    redirect_to artworks_user_path
+  end
+
 end
