@@ -8,7 +8,8 @@ class Artwork < ApplicationRecord
   validates :price, presence: true
   validates :category, presence: true
   validates :dimension, presence: true
-  validates :category, inclusion: { in: ["painting", "sculpture", "installation", "photographie", "vidéo"]}
+  CATEGORY = ["Painting", "Sculpture", "Installation", "Photography", "Video"]
+  validates :category, inclusion: { in: CATEGORY}
 
   def destroy
     @artwork = Artwork.find(params[:id])

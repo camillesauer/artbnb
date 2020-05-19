@@ -1,16 +1,19 @@
 <div class="container">
-  <% @artwork.title %> (<% @artwork.category %>)
+  <%= @artwork.title %> (<%= @artwork.category %>)
 </div>
 <div class="container">
-  <%= cl_image_tag @article.photo.key, height: 300, width: 400 %>
-</div>
-
-
-<div class="container">
-  <% @artwork.description %>
+  <%= cl_image_tag @artwork.photo.key, height: 300, width: 400, crop: :fill %>
 </div>
 
 <div class="container">
-  <% @artwork.description %>
+  <%= @artwork.description %>
+</div>
+
+<div class="container">
+  <%= @artwork.dimension %>
+</div>
+
+<div class="container">
+  <%= @artwork.price %>
 </div>
 
