@@ -1,1 +1,25 @@
-<h1>Artworks</h1>
+<div class="banner" style="background-image: url(<%= asset_path 'banner.jpg'%>)">	
+	<h1>Art'BNB</h1>
+	<h3>Rent your art</h3>
+</div>
+
+<div class="container">
+	<div class="artworks row">
+		<% @artworks.each do |artwork| %>
+			<div class="col-3">
+				<%= link_to artwork_path(artwork), class: "" do %>
+					<div class="card_artwork">
+						<% if artwork.photo.attached? %>
+							<%= cl_image_tag artwork.photo.key, crop: :fill%> 
+						<% else %>
+			    		<%= "no picture" %>
+			  		<% end %>
+			  		<div class="text-center">
+							<p><%= artwork.title %></p>
+							<p id="price"><%= artwork.price %> €/jour</p>
+						</div>
+					</div>
+				<% end %>
+				</div>
+			<% end %>	
+</div>

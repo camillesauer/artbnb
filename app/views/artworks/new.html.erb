@@ -7,7 +7,7 @@
     <%= f.input :description %>
     <%= f.input :dimension %>
     <%= f.input :price %>
-<!--     On va chercher la constante dans le modèle -->
+<!--     On va chercher la constante dans le model -->
     <%= f.input :category, collection: Artwork::CATEGORY, prompt: "Pick one from list", crop: :fill%>    
     <%= f.submit "Add the artwork", class: "btn btn-primary" %>
   <% end %>

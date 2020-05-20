@@ -11,11 +11,4 @@ class Artwork < ApplicationRecord
   CATEGORY = ["Painting", "Sculpture", "Installation", "Photography", "Video"]
   validates :category, inclusion: { in: CATEGORY}
 
-  def destroy
-    @artwork = Artwork.find(params[:id])
-    @artwork.destroy
-
-    redirect_to artworks_user_path
-  end
-
 end

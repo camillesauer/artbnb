@@ -3,10 +3,10 @@ class RentalsController < ApplicationController
     @rentals = Rental.all
   end
 
-  # def show
-  #   @rentals = Rental.all
-  #   @rental = Rental.find(params[:id])
-  # end
+  def show
+    @rentals = Rental.all
+    @rental = Rental.find(params[:id])
+  end
 
   def new
     @rental = Rental.new
