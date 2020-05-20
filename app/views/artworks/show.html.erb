@@ -3,7 +3,11 @@
 	  <%= @artwork.title %> (<%= @artwork.category %>)
 	</div>
 	<div id="picture">
-	  <%= cl_image_tag @artwork.photo.key, height: 300, width: 400, crop: :fill %>
+	  <% if @artwork.photo.attached? %>
+              <%= cl_image_tag @artwork.photo.key, crop: :fill%>
+            <% else %>
+            <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+    <% end %>
 	</div>
 
 	<div class="info-container">
@@ -17,6 +21,6 @@
 
 			<div id="price">
 			  <%= @artwork.price %> €/day
-			</div>	
+			</div>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg'%>)">	
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg'%>)">
 	<h1>Art'BNB</h1>
 	<h3>Rent your art</h3>
 </div>
@@ -10,9 +10,9 @@
 				<%= link_to artwork_path(artwork), class: "" do %>
 					<div class="card_artwork">
 						<% if artwork.photo.attached? %>
-							<%= cl_image_tag artwork.photo.key, crop: :fill%> 
+							<%= cl_image_tag artwork.photo.key, crop: :fill%>
 						<% else %>
-			    		<%= "no picture" %>
+			    		 <%= image_tag "filler_picture.jpg", alt: "alttext" %>
 			  		<% end %>
 			  		<div class="text-center">
 							<p><%= artwork.title %></p>
@@ -21,7 +21,7 @@
 					</div>
 				<% end %>
 				</div>
-			<% end %>	
+			<% end %>
 </div>
 <div id="map"
      style="width: 100%; height: 600px;"

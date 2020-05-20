@@ -4,13 +4,14 @@
 
   <%= simple_form_for [ @artwork ] do |f| %>
     <%= f.input :title, placeholder: 'Short title of your artwork', input_html: { style: "input-group-sm mb-3"}  %>
+    <%= f.input :address, placeholder: 'Where is your artwork' %>
     <%= f.input :photo, as: :file %>
     <%= f.input :description, placeholder: 'Description of your artwork here. Be accurate and make people want to rent your artwork 🙂' %>
     <%= f.input :dimension, placeholder: 'Those are things that will matter' %>
     <%= f.input :price, placeholder: 'How much will it cost to rent your artwork for a day (euros)?'%>
 <!--     On va chercher la constante dans le model -->
-    <%= f.input :category, collection: Artwork::CATEGORY, prompt: "What kind of artwork is it?", crop: :fill%>    
+    <%= f.input :category, collection: Artwork::CATEGORY, prompt: "What kind of artwork is it?", crop: :fill%>
     <%= f.submit "Add the artwork", class: "btn btn-primary" %>
-  <% end %>	
+  <% end %>
 <%#= link_to 'Back', artworks_path %>
 </div>
