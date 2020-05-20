@@ -6,8 +6,11 @@
 	height: 300px;
   background-position: bottom;
   padding: 100px 0;
+  margin-bottom: 30px;
 }
-
+#banner2 {
+    object-fit: cover;
+}
 .banner > h1 {
 	font-size: 5em;
 	text-align: center;
