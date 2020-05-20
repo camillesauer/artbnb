@@ -1,5 +1,17 @@
 class ArtworksController < ApplicationController
 
+  def index
+    @artworks = Artwork.geocoded # returns flats with coordinates
+
+    @markers = @artworks.map do |artwork|
+      {
+        lat: artwork.latitude,
+        lng: artwork.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { artwork: artwork })
+      }
+    end
+  end
+
   def show
     @artwork = Artwork.find(params[:id])
   end
@@ -25,9 +37,16 @@ class ArtworksController < ApplicationController
     redirect_to artwork_path(@artwork)
   end
 
+  def destroy
+    @artwork = Artwork.find(params[:id])
+    @artwork.destroy
+
+    redirect_to artworks_user_path
+  end
+
   private
 
   def artwork_params
-    params.require(:artwork).permit(:title, :description, :price, :category, :dimension, :photo)
+    params.require(:artwork).permit(:title, :description, :price, :category, :dimension, :photo, :address)
   end
 end
