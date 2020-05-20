@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  #On veut que la racine du site se soit artworks-index
+  root to: 'artworks#index'
   resources :artworks do
   	resources :rentals, only: [:index, :new, :create, :delete] # show ?
   end

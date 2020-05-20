@@ -1,9 +1,9 @@
 class ArtworksController < ApplicationController
 
   def index
-    @artworks = Artwork.geocoded # returns flats with coordinates
-
-    @markers = @artworks.map do |artwork|
+    @artworks = Artwork.all
+    @artworks_geo = Artwork.geocoded # returns flats with coordinates
+    @markers = @artworks_geo.map do |artwork|
       {
         lat: artwork.latitude,
         lng: artwork.longitude,

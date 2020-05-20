@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.tabs-underlined .tab-underlined {
+.tabs-underlined, .tab-underlined {
   color: black;
   padding: 8px;
   margin: 8px 16px;
@@ -20,4 +20,8 @@
 .tabs-underlined .tab-underlined.active {
   opacity: 1;
   border-bottom: 3px solid #555555;
+}
+
+list-inline a {
+  text-decoration: none;
 }
