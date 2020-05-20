@@ -1,5 +1,16 @@
 class ArtworksController < ApplicationController
 
+  def index
+    @artworks = Artwork.geocoded # returns flats with coordinates
+
+    @markers = @artworks.map do |artwork|
+      {
+        lat: artwork.latitude,
+        lng: artwork.longitude
+      }
+    end
+  end
+
   def show
     @artwork = Artwork.find(params[:id])
   end
