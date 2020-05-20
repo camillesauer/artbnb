@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url(<%= asset_path 'banner.jpg'%>)">	
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg'%>)">	
 	<h1>Art'BNB</h1>
 	<h3>Rent your art</h3>
 </div>
@@ -16,7 +16,7 @@
 			  		<% end %>
 			  		<div class="text-center">
 							<p><%= artwork.title %></p>
-							<p id="price"><%= artwork.price %> €/jour</p>
+							<p id="price"><%= artwork.price %> €/day</p>
 						</div>
 					</div>
 				<% end %>
