@@ -25,9 +25,16 @@ class ArtworksController < ApplicationController
     redirect_to artwork_path(@artwork)
   end
 
+  def destroy
+    @artwork = Artwork.find(params[:id])
+    @artwork.destroy
+
+    redirect_to artworks_user_path
+  end
+
   private
 
   def artwork_params
-    params.require(:artwork).permit(:title, :description, :price, :category, :dimension, :photo)
+    params.require(:artwork).permit(:title, :description, :price, :category, :dimension, :photo, :address)
   end
 end
