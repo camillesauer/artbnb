@@ -40,7 +40,7 @@ class ArtworksController < ApplicationController
     @artwork = Artwork.new(artwork_params)
     @artwork.user = current_user
     @artwork.save!
-    redirect_to artwork_path(@artwork)
+    redirect_to my_artworks_artworks_path
   end
 
   def edit
