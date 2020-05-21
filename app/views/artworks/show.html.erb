@@ -1,34 +1,38 @@
 <div class="container">
-	<div id="title">
-	  <%= @artwork.title %> (<%= @artwork.category %>)
-	</div>
-
-	<div class="d-flex">
-		<div id="picture" class="w-50">
-		<% if @artwork.photo.attached? %>
-				<%= cl_image_tag @artwork.photo.key, crop: :fill, class:'img-show' %>
-				<% else %>
-				<%= image_tag "filler_picture.jpg", alt: "alttext" %>
-		<% end %>
-
-		</div>
-
-		<div class="w-50">
-		<p>Here we will have a map</p>
-		</div>
-
-	</div>
-
-	<div class="info-container w-50">
+  <div class="d-flex justify-content-between align-middle">
+  	<div id="title">
+  	  <%= @artwork.title %> (<%= @artwork.category %>)
+  	</div>
+    <div>
+      <% if @artwork.user == current_user %>
+        <%= link_to '✏️ Edit artwork info', edit_artwork_path, class: "align-middle" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center row">
+  	<div id="picture" class="col-8">
+  	  <% if @artwork.photo.attached? %>
+                <%= cl_image_tag @artwork.photo.key, crop: :fill%>
+              <% else %>
+              <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+      <% end %>
+  	</div>
+    <div id="map" class="col-4"
+         style="width: 100%; height: 400px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">Map here
+    </div>
+  </div>
+	<div class="info-container">
 			<div id="description">
 			  <%= @artwork.description %>
 			</div>
 
-			<div id="dimension">
-			  <%= @artwork.dimension %>
+			<div id="dimension" class="font-weight-bold">
+			  Dimensions: <%= @artwork.dimension %>
 			</div>
 
-			<div id="price">
+			<div id="price" class="font-italic text-right">
 			  <%= @artwork.price %> €/day
 			</div>
 	</div>
@@ -41,5 +45,4 @@
 		<%= f.button :submit, "Book", class: "btn btn-primary" %>
 		<% end %>
     </div>
-
 </div>
