@@ -9,6 +9,7 @@ class RentalsController < ApplicationController
   end
 
   def new
+    @artwork = Artwork.find(params[:artwork_id])
     @rental = Rental.new
   end
 
@@ -18,8 +19,9 @@ class RentalsController < ApplicationController
     @artwork = Artwork.find(params[:artwork_id])
     @rental.artwork = @artwork
     @rental.user = @user
+    @rental.status = "Pending"
     if @rental.save
-      redirect_to rental_path
+      redirect_to artwork_path(@artwork)
     else
       render 'new'
     end
