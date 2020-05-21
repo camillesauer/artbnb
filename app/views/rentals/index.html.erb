@@ -10,4 +10,9 @@
 <%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
 </div>
 
+<h1> <%= @user.name %>, these are your reservations! </h1>
+<div>
+<% @user.owner_rentals.each do |rental| %>
 
+<% end %>
+</div>
