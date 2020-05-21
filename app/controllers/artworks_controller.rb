@@ -14,6 +14,7 @@ class ArtworksController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
+    @rental = Rental.new
   end
 
   def new
@@ -42,6 +43,10 @@ class ArtworksController < ApplicationController
     @artwork.destroy
 
     redirect_to artworks_user_path
+  end
+
+  def my_artworks
+    @artworks = Artwork.where(user: current_user)
   end
 
   private

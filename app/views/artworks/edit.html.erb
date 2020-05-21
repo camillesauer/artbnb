@@ -1,14 +1,15 @@
-<h3>Update an artwork</h3>
+<div class="d-flex container justify-content-center">
+  <h3>Update my artwork info</h3>
+</div>
 
-<div class="container">
+<div class="container justify-content-center">
   <%= simple_form_for [ @artwork ] do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :dimension %>
     <%= f.input :category %>
-    <%= f.submit "Add artwork", class: "btn btn-primary" %>
+    <%= f.submit "Save changes", class: "btn btn-primary" %>
   <% end %>
-
-  <%= link_to 'Back', artworks_path %>
+  <%= link_to 'Cancel', artworks_path, class: "btn btn-danger m-4" %>
 </div>

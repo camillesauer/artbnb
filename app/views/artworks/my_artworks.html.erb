@@ -1,0 +1,34 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner.jpg'%>)">
+  <h1>Art'BNB</h1>
+  <h3>Rent your art</h3>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h3>Here are the artworks you own</h3>
+      <h5><em>Click on any item to access details</em></h5>
+    </div>
+    <div>
+      <%= link_to '✚ Add new artwork', new_artwork_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="artworks row">
+    <% @artworks.each do |artwork| %>
+      <div class="col-3">
+        <%= link_to artwork_path(artwork), class: "" do %>
+          <div class="card_artwork">
+            <% if artwork.photo.attached? %>
+              <%= cl_image_tag artwork.photo.key, crop: :fill%>
+            <% else %>
+               <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+            <% end %>
+            <div class="text-center">
+              <p><%= artwork.title %></p>
+              <p id="price"><%= artwork.price %> €/day</p>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+</div>
