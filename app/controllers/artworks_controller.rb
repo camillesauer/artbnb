@@ -1,7 +1,13 @@
 class ArtworksController < ApplicationController
 
   def index
-    @artworks = Artwork.all
+
+    if params[:query].present?
+      @artworks = Artwork.where("title ILIKE ?", "%#{params[:query]}%")
+    else
+      @artworks = Artwork.all
+    end
+
     @artworks_geo = Artwork.geocoded # returns flats with coordinates
     @markers = @artworks_geo.map do |artwork|
       {
@@ -10,6 +16,7 @@ class ArtworksController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { artwork: artwork })
       }
     end
+
   end
 
   def show
