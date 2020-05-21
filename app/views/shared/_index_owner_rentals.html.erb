@@ -1,0 +1,10 @@
+<h1> Hello <%= @user.name %>, these are your artworks reservations! </h1>
+<div>
+<ul>
+  <%= @rental.user.name.each do |rental| %>
+  <li><%= rental.artwork.title %> / <%= rental.user.name %></li>
+  <% end %>
+</ul>
+<%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
+</div>
+

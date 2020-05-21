@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   has_many :artworks, dependent: :destroy
   has_many :rentals, dependent: :destroy
-
+  # has_many :owner_rentals, through: :artworks, source: :rental
   has_one_attached :photo
-
+  def owner_rentals
+    self.artworks.map(&:rentals).flatten
+  end
 end
