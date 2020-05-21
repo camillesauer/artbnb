@@ -1,7 +1,14 @@
 <div class="container">
-	<div id="title">
-	  <%= @artwork.title %> (<%= @artwork.category %>)
-	</div>
+  <div class="d-flex justify-content-between align-middle">
+  	<div id="title">
+  	  <%= @artwork.title %> (<%= @artwork.category %>)
+  	</div>
+    <div>
+      <% if @artwork.user == current_user %>
+        <%= link_to '✏️ Edit artwork info', edit_artwork_path, class: "align-middle" %>
+      <% end %>
+    </div>
+  </div>
 	<div id="picture">
 	  <% if @artwork.photo.attached? %>
               <%= cl_image_tag @artwork.photo.key, crop: :fill%>

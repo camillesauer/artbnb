@@ -44,6 +44,10 @@ class ArtworksController < ApplicationController
     redirect_to artworks_user_path
   end
 
+  def my_artworks
+    @artworks = Artwork.where(user: current_user)
+  end
+
   private
 
   def artwork_params
