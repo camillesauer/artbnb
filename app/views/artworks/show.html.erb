@@ -9,24 +9,30 @@
       <% end %>
     </div>
   </div>
-	<div id="picture">
-	  <% if @artwork.photo.attached? %>
-              <%= cl_image_tag @artwork.photo.key, crop: :fill%>
-            <% else %>
-            <%= image_tag "filler_picture.jpg", alt: "alttext" %>
-    <% end %>
-	</div>
-
+  <div class="d-flex justify-content-between align-items-center row">
+  	<div id="picture" class="col-8">
+  	  <% if @artwork.photo.attached? %>
+                <%= cl_image_tag @artwork.photo.key, crop: :fill%>
+              <% else %>
+              <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+      <% end %>
+  	</div>
+    <div id="map" class="col-4"
+         style="width: 100%; height: 400px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">Map here
+    </div>
+  </div>
 	<div class="info-container">
 			<div id="description">
 			  <%= @artwork.description %>
 			</div>
 
-			<div id="dimension">
-			  <%= @artwork.dimension %>
+			<div id="dimension" class="font-weight-bold">
+			  Dimensions: <%= @artwork.dimension %>
 			</div>
 
-			<div id="price">
+			<div id="price" class="font-italic text-right">
 			  <%= @artwork.price %> €/day
 			</div>
 	</div>
