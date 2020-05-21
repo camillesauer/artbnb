@@ -15,6 +15,14 @@ class ArtworksController < ApplicationController
   def show
     @artwork = Artwork.find(params[:id])
     @rental = Rental.new
+    if @artwork.geocode
+      @marker =
+        {
+          lat: @artwork.latitude,
+          lng: @artwork.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { artwork: @artwork })
+        }
+    end
   end
 
   def new
