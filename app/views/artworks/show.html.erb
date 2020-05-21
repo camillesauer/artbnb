@@ -14,7 +14,7 @@
   	  <% if @artwork.photo.attached? %>
                 <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "height:400px; width: auto", class:"align-middle"%>
               <% else %>
-              <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+              <%= image_tag "filler_picture.jpg", alt: "alttext", crop: :fill, style: "height:400px; width: auto", class:"align-middle"%>
       <% end %>
   	</div>
     <div id="map" class="col-4"
