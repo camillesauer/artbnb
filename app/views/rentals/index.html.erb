@@ -3,8 +3,8 @@
 <ul>
   <%= @user.rentals.each do |rental| %>
   <li><%= rental.artwork.title %></li>
-  <%= link_to "Need some idea?", "rentals#edit", class: "btn-primary" %>
-  <%= link_to "Need some idea?", "rentals#destroy", class: "btn-primary" %>
+  <%= link_to "modify", "rentals#edit", class: "btn-primary" %>
+  <%= link_to "cancel", "rentals#destroy", class: "btn-primary" %>
   <% end %>
 </ul>
 <%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
