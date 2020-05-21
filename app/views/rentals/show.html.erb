@@ -1,0 +1,24 @@
+<h1> Hello <%= @user.name %>, these are your rentals! </h1>
+<div>
+<ul>
+  <%= @user.rentals.each do |rental| %>
+  <li><%= rental.artwork.title %></li>
+  <%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
+  <%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
+  <% end %>
+</ul>
+<%= link_to "Need some idea?", "artworks#index", class: "btn-primary" %>
+</div>
+
+
+
+
+
+
+<!-- t.string "start_date"
+    t.string "end_date"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_rentals_on_user_id" -->
