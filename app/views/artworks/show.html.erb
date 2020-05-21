@@ -2,15 +2,24 @@
 	<div id="title">
 	  <%= @artwork.title %> (<%= @artwork.category %>)
 	</div>
-	<div id="picture">
-	  <% if @artwork.photo.attached? %>
-              <%= cl_image_tag @artwork.photo.key, crop: :fill%>
-            <% else %>
-            <%= image_tag "filler_picture.jpg", alt: "alttext" %>
-    <% end %>
+
+	<div class="d-flex">
+		<div id="picture" class="w-50">
+		<% if @artwork.photo.attached? %>
+				<%= cl_image_tag @artwork.photo.key, crop: :fill, class:'img-show' %>
+				<% else %>
+				<%= image_tag "filler_picture.jpg", alt: "alttext" %>
+		<% end %>
+
+		</div>
+
+		<div class="w-50">
+		<p>Here we will have a map</p>
+		</div>
+
 	</div>
 
-	<div class="info-container">
+	<div class="info-container w-50">
 			<div id="description">
 			  <%= @artwork.description %>
 			</div>
@@ -23,4 +32,14 @@
 			  <%= @artwork.price %> €/day
 			</div>
 	</div>
+
+	<div class="form-wrapper">
+	<h2>Book an artwork</h2>
+		<%= simple_form_for [@artwork, @rental] do |f| %>
+		<%= f.input  :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+		<%= f.input  :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+		<%= f.button :submit, "Book", class: "btn btn-primary" %>
+		<% end %>
+    </div>
+
 </div>
