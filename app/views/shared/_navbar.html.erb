@@ -11,6 +11,18 @@
         <li class="nav-item active">
           <%= link_to 'Home', artworks_path(@artwork), class: "navbar" %>
         </li>
+        <ul class="list-inline tabs-underlined">
+          <li>
+            <a href="#" class="tab-underlined active"><%= link_to 'All artworks', artworks_path(@artwork) %></a>
+          </li>
+          <li>
+            <a href="#" class="tab-underlined"><%= link_to 'My artworks', my_artworks_artworks_path %></a>
+          </li>
+          <li>
+            <a href="#" class="tab-underlined"><%= link_to 'My rentals', rentals_path %></a>
+          </li>
+        </ul>
+
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
