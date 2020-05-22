@@ -8,7 +8,7 @@ class ArtworksController < ApplicationController
       @artworks = Artwork.all
     end
 
-    @artworks_geo = Artwork.geocoded # returns flats with coordinates
+    @artworks_geo = Artwork.geocoded
     @markers = @artworks_geo.map do |artwork|
       {
         lat: artwork.latitude,

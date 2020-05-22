@@ -19,7 +19,20 @@
         <%= link_to "modify", "rentals#edit", class: "btn" %>
         <%= link_to "cancel", "rentals#destroy", class: "btn_red" %>
   </div>
+
+   <% if  rental.status == "Accepted" %>
+    <p><strong>Your reservation has been accepted!</strong></p>
+    <% end %>
+    <% if rental.status == "Declined" %>
+    <p><strong>Your reservation has been declined!</strong></p>
+    <% end %>
+    <% if  rental.status == "Pending" %>
+   <p><strong>Waiting for the response from the artwork owner!</strong></p>
+   <% end %>
+
+
   </div>
+
  <% end %>
 
 <h2 class="title"> These are the artworks you offered to rent!</h2>
