@@ -1,5 +1,5 @@
 <div class="main_container">
-  <h2 class="title"> Hello <%= @user.name %>, these are the artworks you booked!</h2>
+  <h4 class="title"> Hello <%= @user.name %>, these are the artworks you booked!</h4>
 
   <% @user.rentals.each do |rental| %>
     <div class="card-trip">
@@ -10,32 +10,26 @@
       <% end %>
   <div class="card-trip-infos">
     <div class="text_design">
-      <h1 class="title2"><%= rental.artwork.title %></h1>
+      <h2 class="title2"><%= rental.artwork.title %></h2>
      <p class="description"><%= rental.artwork.description %></p>
     </div>
     <h2 class="card-trip-pricing"><%= rental.artwork.price %> $ </h2>
   </div>
   <div class="div_btn">
-        <%= link_to "modify", "rentals#edit", class: "btn" %>
+        <%= link_to "modify", "rentals#edit", class: "btn_green" %>
         <%= link_to "cancel", "rentals#destroy", class: "btn_red" %>
   </div>
-
    <% if  rental.status == "Accepted" %>
-    <p><strong>Your reservation has been accepted!</strong></p>
     <% end %>
     <% if rental.status == "Declined" %>
-    <p><strong>Your reservation has been declined!</strong></p>
     <% end %>
     <% if  rental.status == "Pending" %>
-   <p><strong>Waiting for the response from the artwork owner!</strong></p>
    <% end %>
-
-
   </div>
 
  <% end %>
 
-<h2 class="title"> These are the artworks you offered to rent!</h2>
+<h4 class="title"> These are the artworks you offered to rent!</h4>
 <div>
     <% @user.owner_rentals.each do |rental| %>
   <div class="card-trip">
@@ -46,7 +40,7 @@
     <% end %>
   <div class="card-trip-infos">
     <div class="text_design">
-      <h1 class="title2"><%= rental.artwork.title %></h1>
+      <h2 class="title2"><%= rental.artwork.title %></h2>
       <div class= "info_resa">
         <h2 class="status">Status: <%=rental.status %></h2>
         <h2 class="date"><%= rental.start_date %> / <%= rental.end_date %></h2>
