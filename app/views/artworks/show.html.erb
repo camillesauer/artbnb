@@ -39,12 +39,12 @@
 			  ℹ️ <%= @artwork.description %>
 			</div>
 
-			<div id="dimension" class="font-weight-bold">
-			  📐 Dimensions: <%= @artwork.dimension %>
+			<div id="dimension">
+			  📐 "<%= @artwork.dimension %>
 			</div>
 
-			<div id="artwork-price" class="font-italic text-right">
-			  💶 <%= @artwork.price %> €/day
+			<div class="text-right">
+			  <span id="artwork-price"><%= @artwork.price %></span> €/day
 			</div>
 	</div>
 
