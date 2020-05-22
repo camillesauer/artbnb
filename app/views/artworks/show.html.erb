@@ -5,44 +5,46 @@
   	</div>
     <div>
       <% if @artwork.user == current_user %>
-        ✏️ <%= link_to 'Edit artwork info', edit_artwork_path, class: "align-middle" %>
+         <%= link_to '✏️ Edit this artwork', edit_artwork_path, class: "align-middle edit-button"%>
       <% end %>
     </div>
     <div>
     <% if @artwork.user == current_user %>
-        ❌ <%= link_to "Delete this artwork",
-          artwork_path(@artwork), class:"text-danger",
+         <%= link_to "❌ Delete this artwork",
+          artwork_path(@artwork), class:"text-danger delete-button",
           method: :delete,
           data: { confirm: "Delete this artwork? This can't be undone!" } %>
 
       <% end %>
     </div>
   </div>
+
   <div class="d-flex row">
   	<div id="picture" class="col-8">
   	  <% if @artwork.photo.attached? %>
-                <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "height:400px; width: auto", class:"align-middle"%>
+                <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "width: 100%", class:"align-middle"%>
               <% else %>
               <%= image_tag "filler_picture.jpg", alt: "alttext", crop: :fill, style: "height:400px; width: auto", class:"align-middle"%>
       <% end %>
   	</div>
-    <div id="map" class="col-4"
+    <div id="map" class="col-4">
          style="width: 100%; height: 400px;"
          data-marker="<%= @marker.to_json %>"
-         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">Map here
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"Map here
     </div>
   </div>
+
 	<div class="info-container">
 			<div id="description">
-			  <%= @artwork.description %>
+			  ℹ️ <%= @artwork.description %>
 			</div>
 
-			<div id="dimension" class="font-weight-bold">
-			  Dimensions: <%= @artwork.dimension %>
+			<div id="dimension">
+			  📐 "<%= @artwork.dimension %>
 			</div>
 
-			<div id="price" class="font-italic text-right">
-			  <%= @artwork.price %> €/day
+			<div class="text-right">
+			  <span id="artwork-price"><%= @artwork.price %></span> €/day
 			</div>
 	</div>
 
@@ -56,5 +58,5 @@
   		<%= f.button :submit, "Book", class: "btn btn-primary" %>
   		<% end %>
     </div>
-    <% end %>
+  <% end %>
 </div>

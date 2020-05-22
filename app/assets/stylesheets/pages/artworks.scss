@@ -1,8 +1,8 @@
 #title {
 	font-family: Montserrat, sans-serif;
 	font-weight: bold;
-    font-size: .8em;
-    margin: 10px;
+  font-size: 1em;
+  margin: 10px;
 }
 .info-container {
 	padding: 10px;
@@ -11,13 +11,58 @@
     background-color: white;
     margin-top: 10px;
 }
+.banner {
+  height: 300px;
+}
+.banner > h1 {
+  text-align: center;
+  margin-top: 0;
+}
 
 #picture {
   img {
     width:100%;
   }
 }
-
+#artwork-price {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#dimension {
+  font-style: italic;
+  padding-top: .4em;
+}
+.row {
+  padding: .8em;
+}
 .img-show {
     width: 100%;
+}
+.edit-button {
+  color: white;
+  font-family: Montserrat, sans-serif;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: lighter;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+    &:hover {
+    background: linear-gradient(#147EFF, #0F67DA);
+    color: white;
+    text-decoration: none !important;
+    }
+}
+.delete-button {
+  color: white !important;
+  font-family: Montserrat, sans-serif;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: lighter;
+  background: linear-gradient(#e63946, #ef2d56);
+  transition: background 0.3s ease;
+  border: 1px solid #e63946;
+    &:hover {
+    text-decoration: none !important;
+    }
 }
