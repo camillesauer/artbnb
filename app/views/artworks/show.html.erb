@@ -1,11 +1,20 @@
 <div class="container">
-  <div class="d-flex justify-content-between align-middle">
+  <div class="d-flex justify-content-between align-items-center">
   	<div id="title">
   	  <%= @artwork.title %> (<%= @artwork.category %>)
   	</div>
     <div>
       <% if @artwork.user == current_user %>
-        <%= link_to '✏️ Edit artwork info', edit_artwork_path, class: "align-middle" %>
+        ✏️ <%= link_to 'Edit artwork info', edit_artwork_path, class: "align-middle" %>
+      <% end %>
+    </div>
+    <div>
+    <% if @artwork.user == current_user %>
+        ❌ <%= link_to "Delete this artwork",
+          artwork_path(@artwork), class:"text-danger",
+          method: :delete,
+          data: { confirm: "Delete this artwork? This can't be undone!" } %>
+
       <% end %>
     </div>
   </div>
@@ -37,12 +46,15 @@
 			</div>
 	</div>
 
-	<div class="form-wrapper">
-	<h2>want to book this artwork?</h2>
-		<%= simple_form_for [@artwork, @rental] do |f| %>
-		<%= f.input  :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-		<%= f.input  :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-		<%= f.button :submit, "Book", class: "btn btn-primary" %>
-		<% end %>
+  <% if @artwork.user != current_user %>
+  	<div class="form-wrapper">
+  	<h2>Would you like to book this artwork? </h2>
+    <h6><em>Select your dates to send a request to the owner :)</em></h6>
+  		<%= simple_form_for [@artwork, @rental] do |f| %>
+  		<%= f.input  :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  		<%= f.input  :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  		<%= f.button :submit, "Book", class: "btn btn-primary" %>
+  		<% end %>
     </div>
+    <% end %>
 </div>
