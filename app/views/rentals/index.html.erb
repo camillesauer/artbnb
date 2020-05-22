@@ -24,9 +24,13 @@
 
 <h1 class="title"> <%= @user.name %>, these are your reservations! </h1>
 <div class="cards">
-<% @user.owner_rentals.each do |rental| %>
-<div class="card-trip">
 
-<% end %>
+<% @user.owner_rentals.each do |rental| %>
+  <div class="card-trip">
+<p><%=rental.status %></p>
+<%= link_to "Accept", accept_rentals_rental_path(rental), class:"btn btn-success", method: :patch, remote: true%>
+<%= link_to "Decline", decline_rentals_rental_path(rental), class:"btn btn-danger", method: :patch, remote: true %>
+
 </div>
+<% end %>
 </div>

@@ -9,5 +9,10 @@ Rails.application.routes.draw do
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :rentals, only: [:index] # show ?
+  resources :rentals, only: [:index] do
+    member do
+    patch "accept_rentals", to: "rentals#accept_rentals"
+    patch "decline_rentals", to: "rentals#decline_rentals"
+    end
+  end
 end
