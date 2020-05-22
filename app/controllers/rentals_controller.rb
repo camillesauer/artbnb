@@ -8,6 +8,20 @@ class RentalsController < ApplicationController
     @rental = Rental.new
   end
 
+  def accept_rentals
+    @rental = Rental.find(params[:id])
+    @rental.status = "Accepted"
+    @rental.save
+    redirect_to rentals_path
+  end
+
+  def decline_rentals
+    @rental = Rental.find(params[:id])
+    @rental.status = "Declined"
+    @rental.save
+    redirect_to rentals_path
+  end
+
   def create
     @user = current_user
     @rental = Rental.new(rental_params)
