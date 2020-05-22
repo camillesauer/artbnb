@@ -1,5 +1,5 @@
 <div class="main_container">
-  <h2 class="title"> Hello <%= @user.name %>, these are your rentals! </h2>
+  <h2 class="title"> Hello <%= @user.name %>, these are the artworks you booked!</h2>
 
   <% @user.rentals.each do |rental| %>
     <div class="card-trip">
@@ -22,7 +22,7 @@
   </div>
  <% end %>
 
-<h2 class="title"> <%= @user.name %>, these are your reservations! </h2>
+<h2 class="title"> These are the artworks you offered to rent!</h2>
 <div>
     <% @user.owner_rentals.each do |rental| %>
   <div class="card-trip">
