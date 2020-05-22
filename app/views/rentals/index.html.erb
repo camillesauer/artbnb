@@ -1,5 +1,5 @@
 <div class="main_container">
-  <h1 class="title"> Hello <%= @user.name %>, these are your rentals! </h1>
+  <h2 class="title"> Hello <%= @user.name %>, these are the artworks you booked!</h2>
 
   <% @user.rentals.each do |rental| %>
     <div class="card-trip">
@@ -10,14 +10,14 @@
       <% end %>
   <div class="card-trip-infos">
     <div class="text_design">
-      <h2><%= rental.artwork.title %></h2>
+      <h1 class="title2"><%= rental.artwork.title %></h1>
      <p class="description"><%= rental.artwork.description %></p>
     </div>
     <h2 class="card-trip-pricing"><%= rental.artwork.price %> $ </h2>
   </div>
   <div class="div_btn">
         <%= link_to "modify", "rentals#edit", class: "btn" %>
-        <%= link_to "cancel", "rentals#destroy", class: "btn" %>
+        <%= link_to "cancel", "rentals#destroy", class: "btn_red" %>
   </div>
 
    <% if  rental.status == "Accepted" %>
@@ -35,18 +35,29 @@
 
  <% end %>
 
-
-
-
-<h1 class="title"> <%= @user.name %>, these are your reservations! </h1>
-<div class="cards">
-
-<% @user.owner_rentals.each do |rental| %>
+<h2 class="title"> These are the artworks you offered to rent!</h2>
+<div>
+    <% @user.owner_rentals.each do |rental| %>
   <div class="card-trip">
-<p><%=rental.status %></p>
-<%= link_to "Accept", accept_rentals_rental_path(rental), class:"btn btn-success", method: :patch, remote: true%>
-<%= link_to "Decline", decline_rentals_rental_path(rental), class:"btn btn-danger", method: :patch, remote: true %>
-
+    <% if  rental.artwork.photo.attached? %>
+    <%= cl_image_tag rental.artwork.photo.key, alt: "alttext" %>
+    <% else %>
+    <%= image_tag "filler_picture.jpg", alt: "alttext" %>
+    <% end %>
+  <div class="card-trip-infos">
+    <div class="text_design">
+      <h1 class="title2"><%= rental.artwork.title %></h1>
+      <div class= "info_resa">
+        <h2 class="status">Status: <%=rental.status %></h2>
+        <h2 class="date"><%= rental.start_date %> / <%= rental.end_date %></h2>
+      </div>
+      <p class="description"><%= rental.artwork.description %></p>
+    </div>
+  </div>
+  <div class="div_btn">
+      <%= link_to "Accept", accept_rentals_rental_path(rental), class:"btn_green", method: :patch, remote: true%>
+      <%= link_to "Decline", decline_rentals_rental_path(rental), class:"btn_red", method: :patch, remote: true %>
+  </div>
 </div>
 <% end %>
 </div>
